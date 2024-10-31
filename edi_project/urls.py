@@ -26,4 +26,5 @@ urlpatterns = [
     path('create/', views.create_edi_message, name='create_edi_message'),
     path('list/', views.list_edi_messages, name='list_edi_messages'),
     path('upload/', views.upload_edi, name='upload_edi_file'),
+    path('messages/translate/<int:message_id>/', views.translate_edi_message, name='translate_edi_message'),
 ]

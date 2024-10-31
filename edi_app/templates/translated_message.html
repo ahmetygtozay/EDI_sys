@@ -1,0 +1,22 @@
+<!-- templates/edi_app/translated_message.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Translated EDI Message</h2>
+<div class="translated-message">
+    <pre>{{ edi_formatted_message }}</pre>
+</div>
+
+<style>
+    .translated-message {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-family: monospace;
+        white-space: pre-wrap; /* Satır uzunluğuna göre kaymasını önler */
+        word-wrap: break-word; /* Uzun kelimeleri böler */
+    }
+</style>
+<a href="{% url 'list_edi_messages' %}" style="text-decoration:none; color:#4CAF50; font-weight:bold;">Back to Messages List</a>
+{% endblock %}

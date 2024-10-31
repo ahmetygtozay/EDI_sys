@@ -34,7 +34,7 @@ def upload_edi(request):
     return render(request, "upload_edi.html")
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 # edi_app/views.py
 def list_edi_messages(request):
@@ -44,6 +44,8 @@ def list_edi_messages(request):
 
 # edi_app/views.py
 from .forms import EDIMessagesForm
+from .models import EDITranslator
+
 
 def create_edi_message(request):
     if request.method == 'POST':
@@ -54,3 +56,18 @@ def create_edi_message(request):
     else:
         form = EDIMessagesForm()
     return render(request, 'create_edi_messages.html', {'form': form})
+
+
+# views.py
+from .models import EDIMessage
+from .models import EDITranslator  # Eğer sınıf farklı bir dosyada ise
+
+def translate_edi_message(request, message_id):
+    edi_message = EDIMessage.objects.get(id=message_id)
+    translator = EDITranslator() 
+    translated_message = translator.translate(edi_message.document_data)
+    
+    return render(request, 'translated_message.html', {
+        'edi_formatted_message': translated_message
+    })
+
