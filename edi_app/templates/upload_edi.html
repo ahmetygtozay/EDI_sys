@@ -1,0 +1,85 @@
+<!-- upload_edi.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDI Mesajı Yükle</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- CSS eklemek için -->
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Yazı fontu */
+            background-color: #f9f9f9; /* Arka plan rengi */
+            margin: 0;
+            padding: 20px; /* Sayfa içi boşluk */
+        }
+
+        h1 {
+            color: #333; /* Başlık rengi */
+            text-align: center; /* Ortalanmış başlık */
+            margin-bottom: 20px; /* Başlık altı boşluk */
+        }
+
+        form {
+            max-width: 600px; /* Formun maksimum genişliği */
+            margin: 0 auto; /* Ortalanmış form */
+            background-color: #fff; /* Form arka plan rengi */
+            padding: 20px; /* Form içi boşluk */
+            border-radius: 5px; /* Yuvarlatılmış köşeler */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+        }
+
+        label {
+            display: block; /* Etiketin blok olarak gösterilmesi */
+            margin-bottom: 5px; /* Etiket ile giriş alanı arası boşluk */
+            color: #555; /* Etiket rengi */
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%; /* Giriş alanlarının genişliği */
+            padding: 10px; /* İç boşluk */
+            border: 1px solid #ccc; /* Kenarlık */
+            border-radius: 4px; /* Yuvarlatılmış köşeler */
+            margin-bottom: 15px; /* Alt boşluk */
+            font-size: 16px; /* Yazı boyutu */
+        }
+
+        button {
+            background-color: #4CAF50; /* Buton arka plan rengi */
+            color: white; /* Buton yazı rengi */
+            padding: 10px 15px; /* Buton içi boşluk */
+            border: none; /* Kenarlık yok */
+            border-radius: 4px; /* Yuvarlatılmış köşeler */
+            cursor: pointer; /* İmleç değişimi */
+            font-size: 16px; /* Yazı boyutu */
+            transition: background-color 0.3s; /* Hover geçiş efekti */
+            width: 100%; /* Buton genişliği */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Hover rengi */
+        }
+    </style>
+</head>
+<body>
+    <h1>EDI Mesajı Yükle</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="sender">Gönderen:</label>
+        <input type="text" name="sender" id="sender" required><br>
+        
+        <label for="receiver">Alıcı:</label>
+        <input type="text" name="receiver" id="receiver" required><br>
+        
+        <label for="document_type">Belge Türü:</label>
+        <input type="text" name="document_type" id="document_type" required><br>
+        
+        <label for="document_data">Belge Verisi (EDIFACT formatında):</label>
+        <textarea name="document_data" id="document_data" rows="10" required></textarea><br>
+        
+        <button type="submit">EDI Yükle</button>
+    </form>
+</body>
+</html>

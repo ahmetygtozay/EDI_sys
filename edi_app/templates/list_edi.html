@@ -1,0 +1,53 @@
+<!-- templates/edi_app/list_edi_messages.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>EDI Messages</h2>
+<table class="edi-table">
+    <tr>
+        <th>Message ID</th>
+        <th>Message Type</th>
+        <th>Content</th>
+        <th>Created At</th>
+    </tr>
+    {% for message in messages %}
+    <tr>
+        <td>{{ message.id }}</td>
+        <td>{{ message.document_type }}</td>
+        <td>{{ message.document_data }}</td>
+        <td>{{ message.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<style>
+    .edi-table {
+        width: 100%; /* Tablonun genişliği */
+        border-collapse: collapse; /* Kenarları birleştir */
+        margin-top: 20px; /* Üst boşluk */
+    }
+
+    .edi-table th, .edi-table td {
+        border: 1px solid #ddd; /* Kenarlık */
+        padding: 10px; /* İçerideki boşluk */
+        text-align: left; /* Sola hizalama */
+    }
+
+    .edi-table th {
+        background-color: #4CAF50; /* Başlık arka plan rengi */
+        color: white; /* Başlık yazı rengi */
+    }
+
+    .edi-table tr:nth-child(even) {
+        background-color: #f2f2f2; /* Çift satırların arka plan rengi */
+    }
+
+    .edi-table tr:hover {
+        background-color: #ddd; /* Hover efekti */
+    }
+
+    .edi-table td {
+        color: #333; /* Yazı rengi */
+    }
+</style>
+{% endblock %}

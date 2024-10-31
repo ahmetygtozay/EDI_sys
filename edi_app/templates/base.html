@@ -1,0 +1,86 @@
+<!-- edi_app/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EDI System{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex; /* Flexbox ile dikey hizalama */
+            flex-direction: column; /* Dikey yönde hizala */
+            min-height: 100vh; /* Sayfa yüksekliğini en az 100% yap */
+        }
+
+        header {
+            background-color: #4CAF50; /* Yeşil renk */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none; /* Noktaları kaldır */
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline; /* Yatay sıralama */
+            margin: 0 15px; /* Aralarındaki boşluk */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            font-weight: bold;
+            transition: color 0.3s; /* Renk geçiş efekti */
+        }
+
+        nav ul li a:hover {
+            color: #FFD700; /* Altın rengi */
+        }
+
+        div {
+            padding: 20px; /* İçerik alanına boşluk ekle */
+            background-color: white; /* Beyaz arka plan */
+            border-radius: 8px; /* Kenarları yuvarlaştır */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+            margin: 20px; /* Dışarıdan boşluk */
+            flex: 1; /* İçeriğin alanı kaplamasını sağla */
+        }
+
+        footer {
+            text-align: center; /* Ortala */
+            margin-top: 20px; /* Üstten boşluk */
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to EDI System</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'list_edi_messages' %}">EDI Messages</a></li>
+                <li><a href="{% url 'create_edi_message' %}">Create EDI Message</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 EDI System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

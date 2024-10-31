@@ -1,0 +1,65 @@
+<!-- templates/edi_app/create_edi_message.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create EDI Message</h2>
+<form method="POST" class="edi-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+<style>
+    .edi-form {
+        background-color: #f9f9f9; /* Açık gri arka plan */
+        border-radius: 8px; /* Yuvarlatılmış köşeler */
+        padding: 20px; /* İçerideki boşluk */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+        max-width: 500px; /* Maksimum genişlik */
+        margin: 20px auto; /* Ortala */
+    }
+
+    .edi-form h2 {
+        text-align: center; /* Başlık ortala */
+        color: #333; /* Başlık rengi */
+    }
+
+    .edi-form label {
+        display: block; /* Etiketleri blok düzene yerleştir */
+        margin-bottom: 5px; /* Alt boşluk */
+        color: #555; /* Etiket rengi */
+        font-weight: bold; /* Kalın etiketler */
+    }
+
+    .edi-form input, .edi-form select, .edi-form textarea {
+        width: 100%; /* Genişlik */
+        padding: 10px; /* İçerideki boşluk */
+        margin-bottom: 15px; /* Alt boşluk */
+        border: 1px solid #ddd; /* Kenarlık rengi */
+        border-radius: 4px; /* Kenar yuvarlama */
+        font-size: 16px; /* Yazı boyutu */
+        transition: border-color 0.3s; /* Kenarlık geçiş efekti */
+    }
+
+    .edi-form input:focus, .edi-form select:focus, .edi-form textarea:focus {
+        border-color: #4CAF50; /* Seçim rengi */
+        outline: none; /* Kenar kutusunu kaldır */
+    }
+
+    .edi-form button {
+        background-color: #4CAF50; /* Buton rengi */
+        color: white; /* Yazı rengi */
+        padding: 10px; /* İçerideki boşluk */
+        border: none; /* Kenarlık kaldır */
+        border-radius: 4px; /* Kenar yuvarlama */
+        font-size: 16px; /* Yazı boyutu */
+        cursor: pointer; /* İmleç */
+        width: 100%; /* Genişlik */
+        transition: background-color 0.3s; /* Arka plan geçiş efekti */
+    }
+
+    .edi-form button:hover {
+        background-color: #45a049; /* Hover efekti */
+    }
+</style>
+{% endblock %}
